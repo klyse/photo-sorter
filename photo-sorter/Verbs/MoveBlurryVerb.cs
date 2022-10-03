@@ -18,7 +18,7 @@ public class MoveBlurryVerb
         using var fileStream = new StreamReader(blurryResultFile);
         var blurryResults = JsonSerializer.Deserialize<BlurryResults>(fileStream.BaseStream);
 
-        if (blurryResults is null || blurryResults.Results.Count <= 0)
+        if (blurryResults?.Results?.Count is null)
         {
             Log.Warning("No blurry images found");
             return;
@@ -57,6 +57,6 @@ public class MoveBlurryVerb
 
         [JsonPropertyName("fix_size")] public bool FixSize { get; set; }
 
-        [JsonPropertyName("results")] public List<Picture> Results { get; } = null!;
+        [JsonPropertyName("results")] public List<Picture>? Results { get; set; } 
     }
 }
