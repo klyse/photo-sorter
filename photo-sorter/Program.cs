@@ -13,7 +13,7 @@ Log.Logger = new LoggerConfiguration()
 try
 {
     await Host.CreateDefaultBuilder()
-        .ConfigureCocona(args, new[] { typeof(DeleteVerb) })
+        .ConfigureCocona(args, new[] { typeof(DeleteVerb), typeof(MoveBlurryVerb) })
         .UseSerilog()
         .Build()
         .RunAsync();

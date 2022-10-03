@@ -10,15 +10,17 @@ Tested on macOS Monterey
 
 ## Usage
 
+### Delete Different Extensions
+
 Run the program and point it to a working folder:
 
 ```
-dotnet run --folder-path "/Users/klaus/Pictures/Test Pics"
+dotnet run delete-different-extensions --folder-path "/Users/klaus/Pictures/Test Pics"
 ```
 
 Open the pictures in any app you like and start deleting the bad ones. All pictures with the same name but different file extension will be deleted. When you are done just stop the program with `Enter` or `CTRL-C`
 
-### Output:
+#### Output:
 
 ```
 [07:59:19 INF] Sorting /Users/klaus/Pictures/Test Pics
@@ -28,4 +30,14 @@ Open the pictures in any app you like and start deleting the bad ones. All pictu
 [08:00:40 INF] File Deleted /Users/klaus/Pictures/Test Pics/P1030106.JPG
 [08:00:40 INF] Deleting /Users/klaus/Pictures/Test Pics/P1030106.RW2
 [08:00:40 INF] File Deleted /Users/klaus/Pictures/Test Pics/P1030106.RW2
+```
+
+### Move blurry Photos
+
+Follow the instructions on https://github.com/WillBrennan/BlurDetection2 to setup the python blur detection
+
+```
+python process.py -i "/Users/klaus/Pictures/Test Pics" -s results.json
+
+dotnet run move-blurry --folder-path "/Users/klaus/Pictures/Test Pics" --blurry-result-file "/Users/klaus/projects/BlurDetection2/results.json"
 ```
